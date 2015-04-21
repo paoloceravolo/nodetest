@@ -3,4 +3,8 @@
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   }
+  "scripts": {
+  "start": "node web.js"
+},
+"main": "web.js"
 }
