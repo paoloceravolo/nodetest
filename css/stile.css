@@ -1,0 +1,7 @@
+img {border: 0px solid}
+h1, h2, h3 {color: #595;}
+.navlist a:link {color: #975;  border: 0px;} 
+.navlist a:visited {color: #666;  border: 0px;}
+.navlist a:hover, .navlist a:active {color: #595; border: 0px;}
+.hide {color: #fff;}
+
