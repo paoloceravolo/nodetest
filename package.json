@@ -1,6 +1,12 @@
 {
 	"name": "OpenShift-Sever-NonBlocking",
   "version": "0.0.1",
+  "dependencies":
+{
+"express": "~4.0.0",
+"mysql": "*",
+"ejs": "~1.0.0"
+},
   "description": "OpenShift Sever NonBlocking",
   "keywords": [
     "OpenShift",
