@@ -7,7 +7,7 @@ var address =  process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"; // Listening to l
 app.engine('.html', require('ejs').renderFile);
 
 app.get('/',function(req,res){
-res.render('index')
+res.render('index.html')
 });
 app.get('/about',function(req,res){
 res.render('about.html');
