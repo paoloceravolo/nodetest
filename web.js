@@ -10,4 +10,4 @@ res.render('index.html')
 app.get('/about',function(req,res){
 res.render('about.html');
 });
-var server=app.listen(port, adress);
+var server=app.listen(port, address);
