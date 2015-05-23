@@ -10,6 +10,4 @@ res.render('index.html')
 app.get('/about',function(req,res){
 res.render('about.html');
 });
-var server=app.listen(port, function(){
-console.log("Server in esecuzione su porta 8080");
-});
+var server=app.listen(port, adress);
