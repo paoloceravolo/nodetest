@@ -1,5 +1,5 @@
 {
-	"name": "OpenShift-Sever-NonBlocking",
+	"name": "OpenShift-Sever-Express",
   "version": "0.0.1",
   "dependencies":
 {
