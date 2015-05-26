@@ -9,7 +9,7 @@ res.render('index.html')
 app.get('/about',function(req,res){
 res.render('about.html')
 });
-app.get('/esTempalte',function(req,res){
-res.render('esTemplate', { title: 'Prova Tempalting' });
+app.get('/esTemplate',function(req,res){
+res.render('esTemplate', { title: 'Prova Templating' });
 });
 }
