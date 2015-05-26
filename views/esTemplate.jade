@@ -1,6 +1,8 @@
-extends layout
-
-block content
-    h1= title
-    p Eccoci nel file #{title} 
-    p generato attraverso un approccio di Templating
+<html>
+<head>
+<title><%= title %></title>
+</head>
+<body>
+<p>Eccoci nella pagina di <%= title %> </p>
+</body>
+</html>
