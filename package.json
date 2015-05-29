@@ -1,13 +1,13 @@
 {
-	"name": "OpenShift-Sever-Express-Router",
+	"name": "OpenShift-Sever-Express-Mongo",
   "version": "0.0.1",
   "dependencies":
 {
 "express": "~4.0.0",
-"mysql": "*",
-"ejs": "~1.0.0"
+"ejs": "~1.0.0",
+"mongodb": "1.1.x"
 },
-  "description": "OpenShift Sever NonBlocking",
+  "description": "OpenShift Mongo",
   "keywords": [
     "OpenShift",
     "Node.js",
