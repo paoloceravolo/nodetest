@@ -10,7 +10,7 @@ var port = parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT);
 
 // Main DB provider object
 
-var server = new Server(host, port, { auto_reconnect: true }, {});
+var server = new Server(host, port, { auto_reconnect: true });
 db = new Db(process.env.OPENSHIFT_APP_NAME, server);
  
 //var server = new Server('localhost', 27017, {auto_reconnect: true});
