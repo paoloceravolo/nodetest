@@ -5,30 +5,27 @@ var Server     = require('mongodb').Server;
 var BSON       = require('mongodb').BSON;
 var ObjectID   = require('mongodb').ObjectID;
 
-var host = process.env.OPENSHIFT_MONGODB_DB_HOST;
-var port = parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT);
 
 // Main DB provider object
+PProvider = function(host, port, user, pass) {
+    this.db = new Db(process.env.OPENSHIFT_APP_NAME, new Server(host, port, { auto_reconnect: true }, {}));
+    this.db.open(function(error, db){
+        db.authenticate(user, pass, function(error, result) {
 
-var server = new Server(host, port, { auto_reconnect: true });
-db = new Db(process.env.OPENSHIFT_APP_NAME, server);
- 
-//var server = new Server('localhost', 27017, {auto_reconnect: true});
-//db = new Db('winedb', server);
- 
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'winedb' database");
-        db.collection('partite', {strict:true}, function(err, collection) {
+	if(!err) {
+        console.log("Connesso al database");
+        	db.collection('partite', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'partite' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
+        	});
         });
-    }
-});
+    });
+};
  
-exports.findById = function(req, res) {
+ 
+PProvider.prototype.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving wine: ' + id);
     db.collection('partite', function(err, collection) {
@@ -38,7 +35,7 @@ exports.findById = function(req, res) {
     });
 };
  
-exports.findAll = function(req, res) {
+PProvider.prototype.findAll = function(req, res) {
     db.collection('partite', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
@@ -46,7 +43,7 @@ exports.findAll = function(req, res) {
     });
 };
  
-exports.addWine = function(req, res) {
+PProvider.prototype.addP = function(req, res) {
     var partita = req.body;
     console.log('Adding wine: ' + JSON.stringify(partita));
     db.collection('partite', function(err, collection) {
@@ -61,7 +58,7 @@ exports.addWine = function(req, res) {
     });
 }
  
-exports.updateWine = function(req, res) {
+PProvider.prototype.updateP = function(req, res) {
     var id = req.params.id;
     var partita = req.body;
     console.log('Updating wine: ' + id);
@@ -79,7 +76,7 @@ exports.updateWine = function(req, res) {
     });
 }
  
-exports.deleteWine = function(req, res) {
+PProvider.prototype.deleteP = function(req, res) {
     var id = req.params.id;
     console.log('Deleting wine: ' + id);
     db.collection('partite', function(err, collection) {
