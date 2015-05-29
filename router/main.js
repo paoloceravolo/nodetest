@@ -27,7 +27,7 @@ PProvider = function(host, port, user, pass) {
  
 PProvider.prototype.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving wine: ' + id);
+    console.log('Retrieving data: ' + id);
     db.collection('partite', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
@@ -45,11 +45,11 @@ PProvider.prototype.findAll = function(req, res) {
  
 PProvider.prototype.addP = function(req, res) {
     var partita = req.body;
-    console.log('Adding wine: ' + JSON.stringify(partita));
+    console.log('Adding data: ' + JSON.stringify(partita));
     db.collection('partite', function(err, collection) {
         collection.insert(partita, {safe:true}, function(err, result) {
             if (err) {
-                res.send({'error':'An error has occurred'});
+                res.send({'error':'Sorry something went wrong'});
             } else {
                 console.log('Success: ' + JSON.stringify(result[0]));
                 res.send(result[0]);
@@ -61,13 +61,13 @@ PProvider.prototype.addP = function(req, res) {
 PProvider.prototype.updateP = function(req, res) {
     var id = req.params.id;
     var partita = req.body;
-    console.log('Updating wine: ' + id);
+    console.log('Updating data: ' + id);
     console.log(JSON.stringify(partita));
     db.collection('partite', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, partita, {safe:true}, function(err, result) {
             if (err) {
-                console.log('Error updating wine: ' + err);
-                res.send({'error':'An error has occurred'});
+                console.log('Error updating partite: ' + err);
+                res.send({'error':'Sorry something went wrong'});
             } else {
                 console.log('' + result + ' document(s) updated');
                 res.send(partita);
@@ -78,11 +78,11 @@ PProvider.prototype.updateP = function(req, res) {
  
 PProvider.prototype.deleteP = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting wine: ' + id);
+    console.log('Deleting data: ' + id);
     db.collection('partite', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
-                res.send({'error':'An error has occurred - ' + err});
+                res.send({'error':' Sorry something went wrong ' + err});
             } else {
                 console.log('' + result + ' document(s) deleted');
                 res.send(req.body);
