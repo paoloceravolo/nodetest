@@ -5,6 +5,9 @@ var Server     = require('mongodb').Server;
 var BSON       = require('mongodb').BSON;
 var ObjectID   = require('mongodb').ObjectID;
 
+var host = process.env.OPENSHIFT_MONGODB_DB_HOST;
+var port = parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT);
+
 // Main DB provider object
 
 var server = new Server(host, port, { auto_reconnect: true }, {});
