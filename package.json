@@ -1,13 +1,7 @@
 {
-	"name": "OpenShift-Sever-Express-Mongo",
+	"name": "OpenShift-Sever-NonBlocking",
   "version": "0.0.1",
-  "dependencies":
-{
-"express": "~4.0.0",
-"ejs": "~1.0.0",
-"mongodb": "1.1.x"
-},
-  "description": "OpenShift Mongo",
+  "description": "OpenShift Sever NonBlocking",
   "keywords": [
     "OpenShift",
     "Node.js",
