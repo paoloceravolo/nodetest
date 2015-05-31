@@ -20,7 +20,7 @@ PProvider = function(host, port, user, pass) {
                 populateDB();
             }
         	});
-        });
+		}
     });
 };
 };
