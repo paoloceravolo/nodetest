@@ -14,7 +14,7 @@ PProvider = function(host, port, user, pass) {
 
 			if(!err) {
         console.log("Connesso al database");
-        	db.collection('partite', {strict:true}, function(err, collection) {
+        	this.db.collection('partite', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'partite' collection doesn't exist. Creating it with sample data...");
                 populateDB();
@@ -28,7 +28,7 @@ PProvider = function(host, port, user, pass) {
 PProvider.prototype.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving data: ' + id);
-    db.collection('partite', function(err, collection) {
+    this.db.collection('partite', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
         });
@@ -36,7 +36,7 @@ PProvider.prototype.findById = function(req, res) {
 };
  
 PProvider.prototype.findAll = function(req, res) {
-    db.collection('partite', function(err, collection) {
+    this.db.collection('partite', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
         });
@@ -46,7 +46,7 @@ PProvider.prototype.findAll = function(req, res) {
 PProvider.prototype.addP = function(req, res) {
     var partita = req.body;
     console.log('Adding data: ' + JSON.stringify(partita));
-    db.collection('partite', function(err, collection) {
+    this.db.collection('partite', function(err, collection) {
         collection.insert(partita, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'Sorry something went wrong'});
@@ -63,7 +63,7 @@ PProvider.prototype.updateP = function(req, res) {
     var partita = req.body;
     console.log('Updating data: ' + id);
     console.log(JSON.stringify(partita));
-    db.collection('partite', function(err, collection) {
+    this.db.collection('partite', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, partita, {safe:true}, function(err, result) {
             if (err) {
                 console.log('Error updating partite: ' + err);
@@ -79,7 +79,7 @@ PProvider.prototype.updateP = function(req, res) {
 PProvider.prototype.deleteP = function(req, res) {
     var id = req.params.id;
     console.log('Deleting data: ' + id);
-    db.collection('partite', function(err, collection) {
+    this.db.collection('partite', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':' Sorry something went wrong ' + err});
@@ -218,7 +218,7 @@ var populateDB = function() {
                 "stadio": "Twickenham"
             }];
  
-    db.collection('partite', function(err, collection) {
+    this.db.collection('partite', function(err, collection) {
         collection.insert(partite, {safe:true}, function(err, result) {});
     });
 

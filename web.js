@@ -1,13 +1,13 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
 
 var Provider = require('./router/main.js').PProvider;
 
-app.configure(function () {
-    app.use(express.logger('dev'));  
-    app.use(express.bodyParser());
-});
+
+//app.use(express.logger('dev'));  
+app.use(bodyParser());
 
 // Set up the DB
 var prov = new Provider(process.env.OPENSHIFT_MONGODB_DB_HOST,
