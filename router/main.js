@@ -22,7 +22,7 @@ PProvider = function(host, port, user, pass) {
         	});
 		}
     });
-};
+});
 };
  
 PProvider.prototype.findById = function(req, res) {
@@ -221,6 +221,6 @@ var populateDB = function() {
     this.db.collection('partite', function(err, collection) {
         collection.insert(partite, {safe:true}, function(err, result) {});
     });
-
+}
 // Export the DB provider for use in other modules.
 exports.PProvider = PProvider;
