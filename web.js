@@ -16,7 +16,7 @@ mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     }
 });
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 
 // In questo modo posso fare delle mini-app, 
 // attacco il router delle partite sotto la radice /games
