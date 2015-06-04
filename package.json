@@ -1,0 +1,25 @@
+{
+	"name": "OpenShift-Sever-NonBlocking",
+  "version": "0.0.1",
+  "description": "OpenShift Sever NonBlocking",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "Paolo Ceravolo",
+    "email": "paolo.ceravolo at unimi.it",
+    "url": "https://homes.di.unimi.it/ceravolo/"
+  },
+	
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "scripts": {
+  "start": "node web.js"
+},
+"main": "web.js"
+}
